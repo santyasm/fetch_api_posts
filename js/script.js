@@ -20,8 +20,6 @@ async function getAllPosts() {
     const response = await fetch(url);
     const data = await response.json();
 
-    console.log(data)
-
     loadingElement.classList.add("hide");
 
     data.map((post) => {
@@ -39,8 +37,8 @@ async function getAllPosts() {
         div.appendChild(body);
         div.appendChild(link);
 
-        postsContianer.appendChild(div)
-    })
+        postsContianer.appendChild(div);
+    });
 }
 
 // Get individual post 
@@ -66,14 +64,14 @@ async function getPost(id) {
     postContianer.appendChild(body);
 
     dataComments.map(comment => {
-        createComment(comment)
+        createComment(comment);
     })
 }
 
 function createComment(comment) {
-    const div = document.createElement("div")
-    const email = document.createElement("h3")
-    const commentBody = document.createElement("p")
+    const div = document.createElement("div");
+    const email = document.createElement("h3");
+    const commentBody = document.createElement("p");
 
     email.innerText = comment.email;
     commentBody.innerText = comment.body;
@@ -102,7 +100,7 @@ async function postComment(comment) {
 
 
 if (!postId) {
-    getAllPosts()
+    getAllPosts();
 } else {
     getPost(postId);
 
@@ -117,6 +115,6 @@ if (!postId) {
 
         comment = JSON.stringify(comment);
 
-        postComment(comment)
+        postComment(comment);
     })
 }
